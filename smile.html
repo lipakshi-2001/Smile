@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Eyeball move on mousemove </title>
+	<link rel="stylesheet" type="text/css" href="smile.css">
+	<script>
+		document.querySelector('body').addEventListener('onmousemove',eyeball);
+		function eyeball(){
+			var eye1 = document.querySelectorAll('.eye');
+			eye1.forEach(function(eye){
+				let x = (eye.getBoundingClientrect().left)+(eye.clientWidth / 2);
+				let y = (eye.getBoundingClientrect().top) + (eye.clientHeight / 2);
+				let radian = Math.atan2(event.pageX - x,event.pageY - y);
+				let rot = (radian *(180/Math.PI) * -1) + 0;
+				eye.style.transform = "rotate("+rot+"deg)";
+			})
+		}
+	</script>
+</head>
+<body>
+	<div class="face">
+		<div class="eyes">
+		<div class="eye"></div>	
+		<div class="eye"></div>
+		</div>
+	</div>
+	</body>
+	</html>
